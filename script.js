@@ -2,8 +2,14 @@ const container = document.querySelector(".container");
 
 for(let i = 0; i < 256; i++) {
     const newDiv = document.createElement('div');
+    const divSize = 480 / 16;
     newDiv.classList.add("item-" + (i + 1));
     newDiv.classList.add("gridItem");
+
+    newDiv.style.width = divSize + "px";
+    newDiv.style.height = divSize + "px";
+    newDiv.style.border = "1px solid red";
+    newDiv.style.boxSizing = "border-box";
 
     container.appendChild(newDiv);
 }
