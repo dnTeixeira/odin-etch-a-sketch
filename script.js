@@ -1,4 +1,5 @@
 const container = document.querySelector(".container");
+const newGridButton = document.querySelector(".grid-size-button");
 
 for(let i = 0; i < 256; i++) {
     const newDiv = document.createElement('div');
@@ -21,3 +22,7 @@ grid.forEach(item =>
         e.target.style.background = "black";
     })
 );
+
+newGridButton.addEventListener('click', (e) => {
+    
+})
