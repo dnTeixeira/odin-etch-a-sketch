@@ -7,3 +7,11 @@ for(let i = 0; i < 256; i++) {
 
     container.appendChild(newDiv);
 }
+
+const grid = document.querySelectorAll(".gridItem");
+
+grid.forEach(item => 
+    item.addEventListener('mouseover', (e) => {
+        e.target.style.background = "black";
+    })
+);
