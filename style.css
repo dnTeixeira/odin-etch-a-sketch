@@ -1,3 +1,13 @@
-* {
+.container {
+    width: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+.gridItem {
+    width: 30px;
+    height: 30px;
+    border: 1px solid red;
     box-sizing: border-box;
 }
