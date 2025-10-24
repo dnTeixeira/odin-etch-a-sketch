@@ -12,7 +12,7 @@ function createGrid() {
     
         newDiv.style.width = divSize + "px";
         newDiv.style.height = divSize + "px";
-        newDiv.style.border = "1px solid red";
+        newDiv.style.border = "1px solid rgba(192, 192, 192, 1)";
         newDiv.style.boxSizing = "border-box";
     
         container.appendChild(newDiv);
