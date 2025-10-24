@@ -3,15 +3,28 @@ const container = document.querySelector(".container");
 let gridSize = 256;
 let userChoice = 16;
 
+let grid = null;
 const newGridButton = document.querySelector(".grid-size");
 const clearGridButton = document.querySelector(".clear-grid");
+const randomColorsButton = document.querySelector(".random-colors");
+const defaultColorButton = document.querySelector(".default-color");
+
+let isRandomColorsOn = false;
 
 newGridButton.addEventListener('click', (e) => {
-    changeGridSize()
+    changeGridSize();
 });
 
 clearGridButton.addEventListener('click', () => {
-    clearGrid()
+    clearGrid();
+});
+
+randomColorsButton.addEventListener('click', () => {
+    setRandomColorsMode(grid);
+});
+
+defaultColorButton.addEventListener('click', () => {
+    setDefaultColorMode();
 });
 
 function createGrid() {
@@ -28,14 +41,10 @@ function createGrid() {
     
         container.appendChild(newDiv);
     }
+
+    grid = document.querySelectorAll(".gridItem");
     
-    const grid = document.querySelectorAll(".gridItem");
-    
-    grid.forEach(item => 
-        item.addEventListener('mouseover', (e) => {
-            e.target.style.background = "black";
-        })
-    );
+    setDefaultColorMode(grid);
 }
 
 function changeGridSize() {
@@ -64,6 +73,30 @@ function deleteGrid() {
 function clearGrid() {
     container.querySelectorAll(".gridItem").forEach(item =>
         item.style.background = "white"
+    );
+}
+
+function setRandomColorsMode(grid) {
+    isRandomColorsOn = true
+
+    if(isRandomColorsOn) {
+        randomColorsButton.style.background = "rgba(255, 255, 216, 1)"
+        randomColorsButton.style.border = "1px solid rgba(255, 200, 0, 1)"
+        randomColorsButton.style.color = "rgba(255, 200, 0, 1)"
+    }
+
+    grid.forEach(item => 
+        item.addEventListener('mouseover', (e) => {
+            e.target.style.background = "#" + Math.random().toString(16).slice(-6);
+        })
+    );
+}
+
+function setDefaultColorMode() {
+    grid.forEach(item => 
+        item.addEventListener('mouseover', (e) => {
+            e.target.style.background = "black";
+        })
     );
 }
 

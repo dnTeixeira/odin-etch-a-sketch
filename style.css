@@ -54,7 +54,8 @@ body {
 }
 
 .config-buttons button {
-    background: white;
+    background-color: white;
+    cursor: pointer;
     border: 1px solid rgba(192, 192, 192, 1);
     border-radius: 8px;
     padding: 16px;
