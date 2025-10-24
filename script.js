@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-const newGridButton = document.querySelector(".grid-size-button");
+const newGridButton = document.querySelector(".grid-size");
 let gridSize = 256;
 let userChoice = 16;
 

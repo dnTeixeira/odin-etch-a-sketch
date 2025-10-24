@@ -30,10 +30,11 @@ body {
 .wrapper {
     width: 100%;
     flex: 1;
-    background: rgb(255, 254, 246);
+    background: rgb(248, 248, 244);
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 32px;
 }
 
 .container {
@@ -42,5 +43,19 @@ body {
     height: 480px;
     flex-wrap: wrap;
     flex-shrink: 0;
+    background: white;
     border: 1px solid gray;
+}
+
+.config-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.config-buttons button {
+    background: white;
+    border: 1px solid rgba(192, 192, 192, 1);
+    border-radius: 8px;
+    padding: 16px;
 }
