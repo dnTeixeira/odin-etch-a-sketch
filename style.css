@@ -39,12 +39,12 @@ body {
 
 .container {
     display: flex;
-    width: 480px;
-    height: 480px;
+    width: 700px;
+    height: 700px;
     flex-wrap: wrap;
     flex-shrink: 0;
     background: white;
-    border: 1px solid gray;
+    box-shadow: 10px 20x 10px rgb(213, 213, 213);
 }
 
 .config-buttons {
@@ -53,10 +53,20 @@ body {
     gap: 16px;
 }
 
+.config-buttons button:hover {
+    background: #f0f0f0;
+  }
+
 .config-buttons button {
     background-color: white;
     cursor: pointer;
     border: 1px solid rgba(192, 192, 192, 1);
     border-radius: 8px;
     padding: 16px;
+}
+
+.config-buttons .active {
+    background: rgba(255, 255, 216, 1);
+    border: 1px solid rgba(255, 200, 0, 1);
+    color: rgba(255, 200, 0, 1)
 }

@@ -4,12 +4,13 @@ let gridSize = 256;
 let userChoice = 16;
 
 let grid = null;
+const configButtons = document.querySelectorAll(".config-buttons button")
 const newGridButton = document.querySelector(".grid-size");
 const clearGridButton = document.querySelector(".clear-grid");
-const randomColorsButton = document.querySelector(".random-colors");
-const defaultColorButton = document.querySelector(".default-color");
+const randomColorsButton = document.querySelector(".random-colors-mode");
+const defaultColorButton = document.querySelector(".default-color-mode");
 
-let isRandomColorsOn = false;
+let currentMode = "default-color";
 
 newGridButton.addEventListener('click', (e) => {
     changeGridSize();
@@ -20,17 +21,17 @@ clearGridButton.addEventListener('click', () => {
 });
 
 randomColorsButton.addEventListener('click', () => {
-    setRandomColorsMode(grid);
+    setMode("random-colors");
 });
 
 defaultColorButton.addEventListener('click', () => {
-    setDefaultColorMode();
+    setMode("default-color");
 });
 
 function createGrid() {
     for(let i = 0; i < gridSize; i++) {
         const newDiv = document.createElement('div');
-        const divSize = 480 / userChoice;
+        const divSize = 700 / userChoice;
         newDiv.classList.add("item-" + (i + 1));
         newDiv.classList.add("gridItem");
     
@@ -41,10 +42,6 @@ function createGrid() {
     
         container.appendChild(newDiv);
     }
-
-    grid = document.querySelectorAll(".gridItem");
-    
-    setDefaultColorMode(grid);
 }
 
 function changeGridSize() {
@@ -76,28 +73,25 @@ function clearGrid() {
     );
 }
 
-function setRandomColorsMode(grid) {
-    isRandomColorsOn = true
-
-    if(isRandomColorsOn) {
-        randomColorsButton.style.background = "rgba(255, 255, 216, 1)"
-        randomColorsButton.style.border = "1px solid rgba(255, 200, 0, 1)"
-        randomColorsButton.style.color = "rgba(255, 200, 0, 1)"
+function changeColorMode(e) {
+    if(currentMode == "default-color") {
+        e.target.style.background = "black";
+    } else if(currentMode == "random-colors") {
+        e.target.style.background = "#" + Math.random().toString(16).slice(-6);
+    } else {
+        e.target.style.background = "black";
     }
-
-    grid.forEach(item => 
-        item.addEventListener('mouseover', (e) => {
-            e.target.style.background = "#" + Math.random().toString(16).slice(-6);
-        })
-    );
 }
 
-function setDefaultColorMode() {
-    grid.forEach(item => 
-        item.addEventListener('mouseover', (e) => {
-            e.target.style.background = "black";
-        })
-    );
+function setMode(mode) {
+    currentMode = mode;
+    console.log(currentMode);
+    configButtons.forEach(button => button.classList.remove("active"));
+    console.log(`.${mode}-mode`);
+    document.querySelector(`.${mode}-mode`).classList.add("active")
+    console.log(`${document.querySelector(`.${mode}-mode`).classList}`)
 }
+
+container.addEventListener('mouseover', changeColorMode);
 
 createGrid();
