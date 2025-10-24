@@ -1,7 +1,18 @@
 const container = document.querySelector(".container");
-const newGridButton = document.querySelector(".grid-size");
+
 let gridSize = 256;
 let userChoice = 16;
+
+const newGridButton = document.querySelector(".grid-size");
+const clearGridButton = document.querySelector(".clear-grid");
+
+newGridButton.addEventListener('click', (e) => {
+    changeGridSize()
+});
+
+clearGridButton.addEventListener('click', () => {
+    clearGrid()
+});
 
 function createGrid() {
     for(let i = 0; i < gridSize; i++) {
@@ -50,8 +61,10 @@ function deleteGrid() {
     );
 }
 
-newGridButton.addEventListener('click', (e) => {
-    changeGridSize()
-})
+function clearGrid() {
+    container.querySelectorAll(".gridItem").forEach(item =>
+        item.style.background = "white"
+    );
+}
 
 createGrid();
