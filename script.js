@@ -1,14 +1,15 @@
-const container = document.querySelector(".container");
+const container = document.querySelector(".grid-container");
 
 let gridSize = 256;
 let divsPerSide = 16;
 
 const configButtons = document.querySelectorAll(".config-buttons button")
-const newGridButton = document.querySelector(".grid-size");
-const clearGridButton = document.querySelector(".clear-grid");
-const randomColorsButton = document.querySelector(".random-colors-mode");
-const defaultColorButton = document.querySelector(".default-color-mode");
-const shadingColorButton = document.querySelector(".shading-mode");
+
+const newGridButton = document.getElementById("grid-size");
+const clearGridButton = document.getElementById("clear-grid");
+const randomColorsButton = document.getElementById("random-colors-mode");
+const defaultColorButton = document.getElementById("default-color-mode");
+const shadingColorButton = document.getElementById("shading-mode");
 
 let currentMode = "default-color";
 
@@ -35,7 +36,7 @@ shadingColorButton.addEventListener('click', () => {
 function createGrid() {
     for(let i = 0; i < gridSize; i++) {
         const newDiv = document.createElement('div');
-        const divSize = 700 / divsPerSide;
+        const divSize = 600 / divsPerSide;
         newDiv.classList.add("item-" + (i + 1));
         newDiv.classList.add("gridItem");
     
@@ -96,7 +97,7 @@ function setMode(mode) {
     currentMode = mode;
 
     configButtons.forEach(button => button.classList.remove("active"));
-    document.querySelector(`.${mode}-mode`).classList.add("active")
+    document.getElementById(`${mode}-mode`).classList.add("active")
 }
 
 container.addEventListener('mouseover', changeColorMode);
